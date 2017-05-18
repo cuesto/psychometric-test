@@ -1,0 +1,40 @@
+@charset "utf-8";
+body {margin:0px; font-family:Arial, Helvetica, sans-serif}
+.horizontal_margin{margin:0px 43px 0px 43px;}
+
+.bold{ font-weight:bold}
+.normal{ font-style:normal; font-weight:normal;}
+.center{ text-align:center;}
+.colorbase{color:#000000}
+.colorbase1{color:#bd2982}
+.bg_colorbase1{ background-color:#bd2982}
+.colorbase3{color:#5b5b5b}
+.lftfloated{float:left}
+.rgtfloated{float:right}
+.line_spacer{ line-height:1.4em;}
+h5{font-size:12px}
+h4{font-size:12px}
+h3{font-size:14px}
+h2{font-size:16px}
+h1{font-size:18px}
+
+.clear{clear:both}
+.car1_style{font-size:11px}
+.rept_wrapper {	width:100%; height:1000px; border: 1px solid #E2E2E2; display:block;	overflow:hidden; }
+.header{ height:100px; margin:10px 0px 0px 0px; padding:10px 0px 0px 0px}
+.header_logo { float:left; width:30%; height:100px }
+#banner{ width:100%; height:142px; background:url(../cb_ci_images/mn-pgindictr.png) width:700px no-repeat center; display:block; overflow: hidden;}
+#imgclip{width:73px; height:82px; border:3px solid #ffffff; -moz-border-radius-topleft:20px; -moz-border-radius-bottomleft:20px; -webkit-border-top-left-radius:20px; -webkit-border-bottom-left-radius:20px; overflow:hidden; margin:30px 0px 0px 125px; display:block; }
+#btm_logowrap{height:67px; overflow:hidden}
+#btm_logowrap img{margin:0px 0px 0px 159px}
+.ind_cntnt{height:386px; overflow:hidden; display:block;}
+.gen_footer{overflow:hidden; margin:7px 0px 0px 0px; padding:0px 5px 0px 5px; height:145px;}
+#candidate_info{margin:8px 0px 0px 300px}
+#report_info{margin:20px 0px 140px 300px}
+#cont_titlebg{width:195px; height:33px; overflow:hidden; margin:100px 0px 0px 0px;}
+#address, #did_youknow{ margin:15px 0px 0px 80px; overflow:hidden; display:block;}
+#did_youknow{ float:left;}
+
+
+
+
