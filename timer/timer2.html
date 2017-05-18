@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	
+
+	
+	
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18886999-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+
+<body>
+<div id="container">
+    
+    <!-- content -->
+    <div id="content">
+
+        
+        <!-- mainColumn -->
+        <div class="mainColumn topColumn">
+            <div class="moduleTop"></div>
+            <div class="module">
+                
+				<h1><em>oct 20, 2010</em> spriteTimer</h1>
+                <div class="article">
+                    
+
+<div class="example exampleA">
+<h3 class="alt">Example A</h3>
+<div class="timer"></div>
+
+<p>This timer will count down until it reaches 0 and then run the function <strong>runWhenFinished</strong>.</p>
+<pre>
+<code>
+$('.exampleA .timer').spriteTimer({
+   'seconds': 3600,
+   'isCountDown': true,
+   'digitImagePath': '../img/numbers.png',
+   'callback': runWhenFinished
+});
+</code>
+</pre>
+
+</div>
+
+
+<p>The full list of customizable settings is as follows:</p>
+<dl class="settings">
+<dt>'seconds': 60</dt>
+<dd>used for countdown functionality</dd>
+<dt>'digitWidth': 42</dt>
+<dd>you want this set to the width of your numbers image sprite</dd>
+<dt>'digitHeight': 54</dt>
+<dd>you want this set to the height of your numbers image sprite for an individual number</dd>
+<dt>'digitImagePath': '../img/numbers.png'</dt>
+<dd>the path to your numbers picture containing the numbers 9876543210:. [please see the demo pack for the sample image]</dd>
+<dt>'digitElement': 'span'</dt>
+<dd>HTML element to be injected as the digit container [cannot be complex like span.digit"]</dd>
+<dt>'separatorElement': 'em'</dt>
+<dd>HTML element to be injected as the separator (":" or ".") [cannot be complex like "span.digit"]</dd>
+<dt>'startButton': ''</dt>
+<dd>jQuery selector for your start/stop button [the same button is used, example '#startBtn']</dd>
+<dt>resetButton': ''</dt>
+<dd>jQuery selector for your reset button [example '#resetBtn']</dd>
+<dt>callback: function(){}</dt>
+<dd>used for countdown: optional function to call once the timer reaches 0</dd>
+<dt>stopTimerCallback: function(currentSeconds){}</dt>
+<dd>optional function to call when the start/stop button is clicked to stop the timer</dd>
+<dt>startTimerCallback: function(currentSeconds){}</dt>
+<dd>optional function to call when the start/stop button is clicked to resume the timer</dd>
+<dt>resetTimerCallback: function(currentSeconds){}</dt>
+<dd>optional function to call when the reset button is clicked</dd>
+<dt>everySecondCallback: function(currentSeconds){}</dt>
+<dd>optional function to call every second</dd>
+<dt>'isCountDown': true</dt>
+<dd>otherwise the timer starts at 0 and counts up</dd>
+</dl>
+                    
+                    
+                    
+                    
+                
+                </div>
+            </div>
+            <div class="moduleBtm"></div>
+        </div>
+        <!-- end of mainColumn -->
+        
+        
+        
+        
+        
+    </div>
+    <!-- end of content -->
+    
+
+
+</div>
+
+	<script type="text/javascript" src="jquery-1.4.3.min.js"></script>
+	<script type="text/javascript" src="jquery.spriteTimer-1.3.6.min.js"></script>
+	<script type="text/javascript">
+		function runWhenFinished() {
+		    $('.exampleA').css({'background':'#333'});
+			alert("timer finished");
+		}
+		function toggleStartBtn() {
+			var btn = $('#startBtn');
+			if (btn.text() == 'Start Me') {
+				btn.text('Stop Me');
+			} else {
+				btn.text('Start Me');
+			}
+		}
+
+		$(document).ready(function() {
+		    
+			$('.exampleA .timer').spriteTimer({
+		        'seconds': 10,
+		        'isCountDown': true,
+				'digitImagePath': 'numbers.png',
+		        'callback': runWhenFinished
+		    });
+			
+			$('.exampleC .timer').spriteTimer({
+		        'digitImagePath': 'numbers.png',
+				'startButton': '#startBtn',
+				'resetButton': '#resetBtn',
+				'startTimerCallback': toggleStartBtn,
+				'stopTimerCallback': toggleStartBtn,
+				'isCountDown': false,
+		    });
+		});
+	</script>
+	
+
+<script type="text/javascript">
+    var disqus_shortname = 'localhost/jquery_timer/';
+    // var disqus_identifier = 'unique_dynamic_id_1234';
+    var disqus_url = 'http://spasovski.net/code/spritetimer/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + 'embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+</body>
+</html>
