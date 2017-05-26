@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jFormer for Wordpress Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-21 22:13+0400\n"
+"PO-Revision-Date: 2011-08-21 22:14+0400\n"
+"Last-Translator: Christopher Morley <chris@uninifiedmicrosystems.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: JFormerForWP.php:99
+#: JFormerForWP.php:100
+msgid "jFormer Plugin"
+msgstr "jFormer Plugin"
+
+#: JFormerForWP.php:147
+msgid "Settings"
+msgstr "Settings"
+
+#: html/config.php:19
+msgid "Wrap Site Title (Saving Plugin Settings Demo)"
+msgstr "Wrap Site Title (Saving Plugin Settings Demo)"
+
+#: html/config.php:21
+msgid "This demonstrates how to register plugin settings and submit them. When set, the values below will be prepended and appended to the WordPress site title."
+msgstr "This demonstrates how to register plugin settings and submit them. When set, the values below will be prepended and appended to the WordPress site title."
+
+#: html/config.php:28
+msgid "Prepend Site Title With"
+msgstr "Prepend Site Title With"
+
+#: html/config.php:36
+msgid "Append Site Title With"
+msgstr "Append Site Title With"
+
+#: html/config.php:47
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: html/config.php:54
+msgid "Content Find and Replace Rules (Ajax Demo)"
+msgstr "Content Find and Replace Rules (Ajax Demo)"
+
+#: html/config.php:56
+msgid "This demonstrates how to save values to a database table. This form uses Ajax to submit, but degrades gracefully when the user disables javascript. When added, the rules below will find and replace text values in WordPress posts."
+msgstr "This demonstrates how to save values to a database table. This form uses Ajax to submit, but degrades gracefully when the user disables javascript. When added, the rules below will find and replace text values in WordPress posts."
+
+#: html/config.php:62
+msgid "Add a Rule"
+msgstr "Add a Rule"
+
+#: html/config.php:83
+msgid "Find"
+msgstr "Find"
+
+#: html/config.php:91
+msgid "Replace"
+msgstr "Replace"
+
+#: html/config.php:102
+msgid "Add Find and Replace Rule"
+msgstr "Add Find and Replace Rule"
+
+#: html/config.php:106
+msgid "Rules"
+msgstr "Rules"
+

@@ -1,0 +1,24 @@
+// add jformer.js - line 2335
+
+ // Wrap all of the form responses into an object based on the component jFormComponentType
+        var formData = $('<input type="hidden" name="jFormer" />').attr('value', encodeURI(jFormerUtility.jsonEncode(this.getData()))); // Set all non-file values in one form object
+        var formIdentifier = $('<input type="hidden" name="jFormerId" value="'+this.id+'" />');
+        formClone.append(formData);
+        formClone.append(formIdentifier);
+		
+		var formExtra = $('<input type="hidden" name="action" value="jFormerForWp" />'); 
+		formClone.append(formExtra); 
+		
+		
+		
+		
+// add jformer.php - line 730
+  function processRequest($silent = false) {
+		ob_start(); /* added manually for Wordpress plugin */
+	
+		print_r($_POST);
+	
+	
+// add jformer.php - line 817
+		$output = ob_get_clean();
+		return $output;
