@@ -1,0 +1,251 @@
+.reportPage
+{
+width:2480px;
+height:3508px;
+background:#FFFFFF;
+margin:0 auto;
+  
+}
+
+.reportPageSmall
+{
+width:2480px;
+ 
+background:#FFFFFF;
+margin:0 auto;
+  
+}
+.siteHeaderWrapperLarge
+{
+/*height:606px;*/
+width:2480;
+}
+
+.siteHeaderWrapper
+{
+height:271px;
+width:100%;
+
+}
+
+.siteHeaderText
+{ 
+float:left;
+color:#dfdfdf;
+font-size:100px;
+margin-bottom:0;
+margin-top:auto;
+/*width:1458px;*/
+ margin-top:160px;
+ margin-left:100px;
+
+}
+
+
+
+ 
+
+
+.siteLogo
+{
+width:856px;
+height:269px;
+float:right;
+}
+
+
+.horizontalRuler
+{
+-moz-border-radius: 15px;
+ border-radius: 15px;
+ margin-top:5px;
+ margin-bottom:5px;
+ 
+ background-color:#373737
+}
+
+.contents
+{
+/*height:2935px;*/
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.uniqueid
+{
+height:168px;
+width:2480px;
+}
+.referenceNumberSection
+{
+float:right;
+width:600px;
+height:168px;
+ 
+}
+
+.referenceNumberSection.number
+{
+width:600px;
+height:58px;
+color:#bd2882;
+font-size: 55px;
+font-family:Arial, Helvetica, sans-serif;
+}
+.referenceNumberSection.barcode
+{
+width:600px;
+height:110px;
+}
+
+
+.referenceNumberSectionLarge
+{
+	float:right;
+	width:600px;
+	height:168px;
+	margin-top: 230px;
+	margin-right: 150px;
+}
+
+.referenceNumberSection.numberLarge
+{
+width:600px;
+height:58px;
+color:#bd2882;
+font-size: 60px;
+}
+.referenceNumberSection.barcodeLarge
+{
+width:600px;
+height:110px;
+}
+
+.heading{
+	font-size: 40px;
+	font-weight: bold;
+	margin-left:50px;}
+	
+.headingMedium{
+	font-size: 84px;
+	font-weight: bold;
+	margin-left:55px;}
+.headingLarge{
+	font-size: 169px;
+	font-weight: bold;
+	margin-left:50px;
+	margin-top:5px;
+	margin-bottom:5px;}
+		
+.headingSmall{
+	font-size:65px;
+	font-weight: bold;
+	margin-left:50px;
+	margin-bottom:1px;}
+	
+.text14{
+margin-top:3px;
+font-size:65px;
+margin-left:80px;
+line-height:95%;
+margin-bottom:2px;
+}
+
+.personalityAnalysisGraph
+{
+width:2426px;
+/*height:590px;*/
+text-align:center;
+margin: 0px 0px 0px opx;
+}
+
+.possibilities{
+background-color:#cdc9c8;
+-moz-border-radius: 35px;
+ border-radius: 35px;
+ margin-left:80px;
+ font-size: 60px;
+ padding-top:20px;
+ padding-bottom:20px;
+ 
+}
+
+.possibilities ul{
+margin-left:20px;
+}
+
+.successSecret{
+font-size:20px;
+font-family:Arial, Helvetica, sans-serif;
+ margin-left:80px;
+ font-size: 60px;
+ padding-top:20px;
+ padding-bottom:20px;
+}
+
+.examplesList
+{background-image:url(images/Sample.png) ;
+background-repeat:no-repeat;
+ margin-left:20px;
+
+}
+
+
+.examplesList ul
+ {
+ list-style-image:url(images/Arrow.png);
+  font-size: 60px;
+ 
+ } 
+ 
+ 
+ 
+ 
+ .charimanMessage
+ {
+ font-size:94px;
+ 
+ }
+ 
+.footer {
+-moz-border-radius: 20px;
+ border-radius: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #373737;
+	height: 123px;
+	 
+	color: #FFFFFF;
+	/*margin-left:50px;*/
+	margin-right:50px;
+	margin-bottom:50px;
+	 text-align: center;
+	vertical-align:middle;
+	font-size: 60px;
+	font-weight: bold;
+	width:2480px;
+	padding-top:60px;
+}
+
+.footerLarge {
+
+-moz-border-radius: 20px;
+ border-radius: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	 
+	width:2480px;
+	color: #FFFFFF;
+	margin-left:50px;
+	margin-right:50px;
+	margin-bottom:50px;
+	 text-align: center;
+	vertical-align:middle;
+	font-size: 36px;
+	font-weight: bold;
+	padding-top:80px;
+	
+	width:2480px;
+	height:270px
+}
+
+
+ 
+ 

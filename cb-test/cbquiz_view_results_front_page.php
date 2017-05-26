@@ -1,8 +1,8 @@
 <br />
 <form method="GET">
 	<input type="hidden" name="page" value="cbquiz-view-results"/>
-  <input type="text" name="test_id" placeholder="Input test id" value="<?php if(isset($_REQUEST['results'])){ echo $_REQUEST['test_id']; } ?>">
-  <button type="submit" name="results" value="view">Search Test</button>
+  <input type="hidden" name="test_id" placeholder="Input test id" value=17>
+  <button type="submit" name="results" value="view" class="button">View Results</button>
 </form>
 <?php
 	global $wpdb;
@@ -14,7 +14,7 @@
     		include 'cbquiz_view_results.php';
     	}
     	else{
-    		echo "Wrong ID";
+    		echo "<h2>Wrong ID</h2>";
     	}
-	}
+    }
 ?>

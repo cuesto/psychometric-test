@@ -23,7 +23,11 @@ include ('cbquiz_bill.php');
 include ('cbquiz_after_login.php');
 include ('user_test_history.php');
 include ('connect.php');
-
+function wpdocs_theme_name_scripts() {
+    wp_enqueue_script( 'simply-scroll', plugins_url( '/js/jquery.simplyscroll.js' , __FILE__ ) , array(), '1.0.0', true );
+    wp_enqueue_script( 'sticky-scroll', plugins_url( '/js/jquery.stickyscroll.js' , __FILE__ ) , array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
 function cbquiz_admin()
 {
@@ -59,6 +63,8 @@ function cbquiz_admin_actions()
 {
     add_menu_page("CB Quiz", "CB Quiz", 1, "CB-Quiz", "cbquiz_admin", site_url().'/wp-content/themes/cb/images/favicon.ico');
     add_submenu_page("CB-Quiz", "Results", "Results","manage_options", "cbquiz-view-results","cbquiz_results_page");
+    add_submenu_page("CB-Quiz", "Settings", "Settings","manage_options", "CB-Quiz","cbquiz_admin");
+    remove_submenu_page('CB-Quiz','CB-Quiz');
 }
 
 function cbquiz_install()

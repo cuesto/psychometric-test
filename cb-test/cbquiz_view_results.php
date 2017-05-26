@@ -2,7 +2,7 @@
 <h1>Search Candidate</h1>
 <form name="customer_search" method="GET">
     <input type="hidden" name="page" value="cbquiz-view-results"/>
-    <input type="hidden" name="test_id" value="1"/>
+    <input type="hidden" name="test_id" value="17"/>
     <input type="hidden" name="results" value="view"/>
     <input type="text" name="query"/>
     <input type="submit" name="submit_query" value="Search Candidate"/>
