@@ -459,10 +459,17 @@ class JFormerForWP
 	public static function scripts()
 	{
 	   
-		wp_enqueue_script( 'jformer', self::$pluginUrl.'jFormer/jFormer.js', array('jquery'), '1.10.2', true);
+		wp_register_script('jformer', self::$pluginUrl.'jFormer/jFormer.js', array('jquery'), '1.10.2', true);
+		wp_enqueue_script('jformer');
 		wp_enqueue_script( 'countdown.min.js', self::$pluginUrl.'countdown.min.js', array('jformer'), '1.10.2', true);
         
 		wp_enqueue_script( 'jquery-ui-progressbar' );
+
+		$translation_array = array(
+			'plugin_url' => plugin_dir_url( __FILE__ )
+		);
+		
+		wp_localize_script( 'jformer', 'php_encoded', $translation_array );
 
 		
 		/*wp_localize_script('JFormerForWP_SubmitForm','JFormerForWP',

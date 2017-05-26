@@ -38,7 +38,7 @@ function displayTimer()
             jQuery('.exampleA .timer').spriteTimer({
                 'seconds': countdownValues[0][0],
                 'isCountDown': true,
-                'digitImagePath': '/wp-content/plugins/jformer-for-wp/numbers.png',
+                'digitImagePath': php_encoded.plugin_url+'/numbers.png',
                 'callback': runWhenFinished,
             /*               'digitWidth': 45,
                     'digitHeight': 40      */
