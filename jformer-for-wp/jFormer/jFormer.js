@@ -76,7 +76,7 @@ function countdownInit() {
         }
         
         textInsideContainer += "<div class=\"progress-bar\"><div class=\"progress_txt\">Progress</div><div class=\"progressbar\" id=\"progressbar\" style=\"display:block;\"></div><div id=\"progress_percentage\">0%</div></div><br/>";
-        textInsideContainer += "<style type=\"text/css\">.ui-progressbar-value { background-image: url('/wp-content/plugins/jformer-for-wp/css/images/pbar-ani.gif'); }</style>";
+        textInsideContainer += "<style type=\"text/css\">.ui-progressbar-value { background-image: url('"+php_encoded.plugin_url+"pbar-ani.gif'); }</style>";
     
         ReplaceContentInContainer(".jFormerTitle", textInsideContainer);    
         
