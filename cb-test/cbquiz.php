@@ -59,12 +59,22 @@ function cbquiz_results_page()
 {
 	include ('cbquiz_view_results_front_page.php');
 }
+
+function cbquiz_settings()
+{
+	include ('cbquiz_settings.php');
+}
+function cbquiz_coupons()
+{
+	include ('cbquiz_coupons.php');
+}
 function cbquiz_admin_actions()
 {
     add_menu_page("CB Quiz", "CB Quiz", 1, "CB-Quiz", "cbquiz_admin", site_url().'/wp-content/themes/cb/images/favicon.ico');
+    add_submenu_page("CB-Quiz", "Tests", "Tests","manage_options", "CB-Quiz","cbquiz_admin");
     add_submenu_page("CB-Quiz", "Results", "Results","manage_options", "cbquiz-view-results","cbquiz_results_page");
-    add_submenu_page("CB-Quiz", "Settings", "Settings","manage_options", "CB-Quiz","cbquiz_admin");
-    remove_submenu_page('CB-Quiz','CB-Quiz');
+    add_submenu_page("CB-Quiz", "Settings", "Settings","manage_options", "cbquiz-settings","cbquiz_settings");
+    add_submenu_page("CB-Quiz", "Coupons", "Coupons","manage_options", "cbquiz-coupons","cbquiz_coupons");
 }
 
 function cbquiz_install()
@@ -73,6 +83,16 @@ function cbquiz_install()
     global $cbquiz_db_version;
 
     require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+
+    /*$table_name = $wpdb->prefix . "cb_payumoney";
+    $sql = "CREATE TABLE IF NOT EXISTS `$table_name` (
+    		 `id` int(50) NOT NULL AUTO_INCREMENT,
+    		 `payu_salt` varchar(50) NOT NULL,
+			 `payu_merchant` varchar(50) NOT NULL,
+			 `payu_status` varchar(1) NOT NULL COMMENT '0- Test, 1- Live',
+			 PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=latin1";
+	dbDelta($sql);*/
 
     $table_name = $wpdb->prefix . "cb_connect";
 	$sql = "CREATE TABLE IF NOT EXISTS `$table_name` (
@@ -273,9 +293,11 @@ function ref_no_details($ref_no, $coupon = null)
     global $wpdb;
     $currency = "INR";
 
+	//Get name of test from wp_cb_result_master and wp_cb_test
     $details = new CB_Connect;
     $details = $details->get($ref_no);
-    
+    //print_r($details);
+	//Write completely new code.
     $url = site_url()."/coupon/searchCouponResults.php?coupon=$coupon&product=All";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -381,7 +403,8 @@ function custom_edit_user_profile($user_info){
         <td><select class="input" name="degree" id="degree">
 <?php
             global $wpdb;
-            $degrees = $wpdb->get_results("SELECT * FROM wp_cb_ci_degree");
+			$table = $wpdb->prefix . "cb_ci_degree";
+            $degrees = $wpdb->get_results("SELECT * FROM `$table`");
             foreach($degrees as $degree)
             {
                 if($degree->degree_id == $user_info->degree_id)

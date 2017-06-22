@@ -21,8 +21,8 @@ class CB_Connect
         
         $product_id=$details['product_id'];
         $product_ref_no=$details['product_ref_no'];
-        
-        $result = $wpdb->get_results("SELECT * FROM wp_cb_connect WHERE
+        $table = $wpdb->prefix . "cb_connect";
+        $result = $wpdb->get_results("SELECT * FROM `$table` WHERE
                 ( uid=$uid OR email='$email' )
                 AND product_id=$product_id
                 AND status != 3
@@ -50,12 +50,16 @@ class CB_Connect
     public function get($connect_id)
     {
         global $wpdb;
-        $results = $wpdb->get_results("SELECT * FROM wp_cb_connect WHERE connect_id=$connect_id");
+        //echo "SELECT * FROM wp_cb_connect WHERE connect_id=$connect_id";
+        $table = $wpdb->prefix . "cb_connect";
+        $results = $wpdb->get_results("SELECT * FROM `$table` WHERE connect_id=$connect_id");
+        //print_r($results);
         $results=$results[0];
         if($results->connect_id>0)
         {
             $product_id = $results->product_id;
-            $results1 = $wpdb->get_results("SELECT * FROM wp_cb_connect_product WHERE product_id=$product_id");
+            $table = $wpdb->prefix . "cb_connect_product";
+            $results1 = $wpdb->get_results("SELECT * FROM `$table` WHERE product_id=$product_id");
             $results1=$results1[0];
             $details['item_name'] = $results1->product_name;
             $details['item_cost'] = $results1->amount;
@@ -65,10 +69,11 @@ class CB_Connect
             $result = $wpdb->get_results("SELECT cost,name, FROM `$table_name1`,`$table_name2` WHERE $table_name1.test_id = $table_name2.test_id AND $table_name2.ref_no = $connect_id ");
             
             $user_info = get_userdata(get_current_user_id());
+            //print_r($user_info->product);
             if($user_info->product==1)
             {
                 $details['item_cost'] = 499;
-                $details['item_name'] = 'Know your career';        
+                $details['item_name'] = 'Career Indicator';        
             } 
             else if($user_info->product==2)
             {
