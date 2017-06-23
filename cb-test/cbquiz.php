@@ -288,7 +288,7 @@ add_filter('show_admin_bar', '__return_false');
 //require_once (ABSPATH . WPINC . '/registration.php');
 global $wpdb, $user_ID;
 
-function ref_no_details($ref_no, $coupon = null)
+function ref_no_details($ref_no, $coupon)
 {
     global $wpdb;
     $currency = "INR";
@@ -298,24 +298,23 @@ function ref_no_details($ref_no, $coupon = null)
     $details = $details->get($ref_no);
     //print_r($details);
 	//Write completely new code.
-    $url = site_url()."/coupon/searchCouponResults.php?coupon=$coupon&product=All";
+    /*$url = site_url()."/coupon/searchCouponResults.php?coupon=$coupon&product=All";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $discount = curl_exec($ch);
-    curl_close($ch);    
-    if ($discount == 2) {
+    curl_close($ch);*/
+    $table = $wpdb->prefix . "cb_coupon";
+    $discount = $wpdb->get_results("SELECT coupon_discount FROM `$table` WHERE coupon_code = '".$coupon."'");
+    $coupon_check = $wpdb->num_rows;   
+    if ($coupon_check > 0) {
+        //$discount = json_decode(trim($discount, true),true);
+        $details['discount'] = ($details['item_cost'] * ($discount[0]->coupon_discount / 100));
+        $details['status'] = "Coupon successfully applied";
+    } else{
         $details['discount'] = 0;
         $details['status'] = 'Sorry, selected coupon doesn\'t exist.';
-    } else
-        if ($discount == 3) {
-            $details['discount'] = 0;
-            $details['status'] = 'Sorry, selected coupon is expired.';
-        } else {
-            $discount = json_decode(trim($discount, true),true);
-            $details['discount'] = $details['item_cost'] * $discount['Coupon_Discount'] / 100;
-            $details['status'] = "Coupon successfully applied";
-        }
+    }
 
     $details['total'] = $details['item_cost'] - $details['discount'];
     $details['currency'] = $currency;
@@ -439,6 +438,78 @@ function save_custom_user_profile_fields($uid){
     $wpdb->update('wp_users', Array('degree_id'=>$_POST['degree']), Array('ID' => $uid));
     $wpdb->update('wp_users', Array('contact_number'=>$_POST['contact_number']), Array('ID' => $uid));
 }
+function order_payment_form() {
+    include 'order_payment_form.php';
+}
+
+add_shortcode('order_payment',order_payment_form);
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
+function payform()
+{
+
+        $test_id = $_GET['test_id'];
+        $ref_no = $_GET['ref_no'];
+        
+        if(isset($_GET['coupon']))
+            $coupon = $_GET['coupon'];
+        
+        
+        if(!isset($ref_no))
+            ;// redirect to homepage
+        
+        //Set initial parameters
+        $ref_no_details = ref_no_details($ref_no,$coupon);
+        $user_info = get_userdata(get_current_user_id());    
+
+        $CBConnect = new CB_Connect;
+        $firstName = $CBConnect->get_first_name();
+        echo "<div class='payment-details'>";
+        if(isset($coupon))
+        {
+            echo "<strong><font size=\"+1\" color=\"red\">".$ref_no_details['status']."</font></strong>";
+        }    
+        //print_r($ref_no_details);
+        echo '<table class="order-table" cellpadding="5"  cellspacing="10">
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            <tr>
+                <td>'.$ref_no_details['item_name'].', (Reference Number: '.$ref_no.')</td>
+                <td>'.$ref_no_details['item_cost']."(".$ref_no_details['currency'].')</td>
+            </tr>';
+        if(isset($coupon) && $ref_no_details['discount']>0)
+        {
+            echo '<tr>
+                <td>Discount</td>
+                <td>'.$ref_no_details['discount']."(".$ref_no_details['currency'].')</td>
+            </tr>';
+        }
+        echo  '
+            <tr class="total">
+                <td>Total</td>
+                <td>'.$ref_no_details['total']."(".$ref_no_details['currency'].')</td>
+            </tr>
+        </table>';    
+
+        echo "<hr/>";
+        echo '<p>Got a coupon? Enter it here.</p><form name="coup" method="get">
+            <input type="hidden" name="ref_no" value="'.$ref_no.'"/>
+            <input type="hidden" name="test_id" value="2"/>
+            <input type="text" name="coupon" value="'.$_GET['coupon'].'">
+            <input type="submit" class="btn"/>
+        </form>';
+
+        echo "</div>";
+
+    if ($ref_no_details['total'] != 0) {
+        echo do_shortcode('[jformer id="2"]');
+    }
+    else{
+        echo "<form method='post' align='center'><button type='submit' name='unlock'>Unlock</button></form>";
+    }
+
+}
+add_shortcode('payform',payform);
 ?>

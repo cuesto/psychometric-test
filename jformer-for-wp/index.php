@@ -458,8 +458,7 @@ class JFormerForWP
     
 	public static function scripts()
 	{
-	   
-		wp_register_script('jformer', self::$pluginUrl.'jFormer/jFormer.js', array('jquery'), '1.10.2', true);
+	    wp_register_script('jformer', self::$pluginUrl.'jFormer/jFormer.js', array('jquery'), '1.10.2', true);
 		wp_enqueue_script('jformer');
 		wp_enqueue_script( 'countdown.min.js', self::$pluginUrl.'countdown.min.js', array('jformer'), '1.10.2', true);
         
@@ -472,10 +471,11 @@ class JFormerForWP
 		wp_localize_script( 'jformer', 'php_encoded', $translation_array );
 
 		
-		/*wp_localize_script('JFormerForWP_SubmitForm','JFormerForWP',
+		/**wp_localize_script('jformer','JFormerForWP',
 			array(
-				'AjaxError'=>__('An error occurred. Please try your action again. If the problem persists please contact the plugin developer.','B2Template')
-		));*/
+				'AjaxError'=>__('An error occurred. Please try your action again. If the problem persists please contact the developer.','B2Template'),
+				'plugin_url' => plugin_dir_url( __FILE__ )
+		));**/
 	}
 }
 

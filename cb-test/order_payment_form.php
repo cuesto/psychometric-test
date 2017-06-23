@@ -1,43 +1,4 @@
 <?php
-
-    $test_id = $_GET['test_id'];
-        $ref_no = $_GET['ref_no'];
-        
-        if(isset($_GET['coupon']))
-            $coupon = $_GET['coupon'];
-        
-        
-        if(!isset($ref_no))
-            ;// redirect to homepage
-        
-        //Set initial parameters
-        $ref_no_details = ref_no_details($ref_no,$coupon);
-        $user_info = get_userdata(get_current_user_id());    
-
-        $CBConnect = new CB_Connect;
-        $firstName = $CBConnect->get_first_name();
-        //echo "<div class='payment-details'>";
-        if(isset($coupon))
-        {
-            $ref_no_details['status'];
-        }    
-        //print_r($ref_no_details);
-        /*echo '<table class="order-table" cellpadding="5"  cellspacing="10">
-            <tr>
-                <th>Name</th>
-                <th>Cost</th>
-            </tr>
-            <tr>
-                <td>'.*/$ref_no_details['item_name']; $ref_no;
-                $ref_no_details['item_cost']; $ref_no_details['currency'];
-            
-        if(isset($coupon) && $ref_no_details['discount']>0)
-        {
-            $ref_no_details['discount']; $ref_no_details['currency'];
-        }
-            $ref_no_details['total']; $ref_no_details['currency'];
-
-
     echo "<div class='payment-form-details'>"; 
     $form->addJFormComponentArray(array(
         new JFormComponentMultipleChoice('payment_type', 'How would you like to pay?', array(

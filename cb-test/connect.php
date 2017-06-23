@@ -47,13 +47,13 @@ class CB_Connect
         return $connect_id;
     }
     
-    public function get($connect_id)
+    /*public function get($connect_id)
     {
         global $wpdb;
         //echo "SELECT * FROM wp_cb_connect WHERE connect_id=$connect_id";
         $table = $wpdb->prefix . "cb_connect";
         $results = $wpdb->get_results("SELECT * FROM `$table` WHERE connect_id=$connect_id");
-        //print_r($results);
+        print_r($results);
         $results=$results[0];
         if($results->connect_id>0)
         {
@@ -70,7 +70,8 @@ class CB_Connect
             
             $user_info = get_userdata(get_current_user_id());
             //print_r($user_info->product);
-            if($user_info->product==1)
+            //if($user_info->product==1)
+            if($user_info->test_id==15)
             {
                 $details['item_cost'] = 499;
                 $details['item_name'] = 'Career Indicator';        
@@ -86,6 +87,25 @@ class CB_Connect
                 $details['item_name'] = 'Complete Counseling for a year';        
             }
         }
+        return $details;                
+    }*/
+
+    public function get($connect_id)
+    {
+        global $wpdb;
+        $table = $wpdb->prefix . "cb_result_master";
+        $results = $wpdb->get_results("SELECT * FROM `$table` WHERE ref_no=$connect_id");
+        //echo "SELECT * FROM `$table` WHERE ref_no=$connect_id";
+        if($wpdb->num_rows>0)
+        {
+            $table_name1 = $wpdb->prefix . "cb_test";
+            $table_name2 = $wpdb->prefix . "cb_result_master";
+            $result = $wpdb->get_results("SELECT cost,name FROM `$table_name1`,`$table_name2` WHERE $table_name1.test_id = $table_name2.test_id AND $table_name2.ref_no = $connect_id");
+            //print_r($result);
+            $details['item_cost'] = $result[0]->cost;
+            $details['item_name'] = $result[0]->name;
+        }
+        //print_r($details);
         return $details;                
     }
     

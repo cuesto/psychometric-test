@@ -31,15 +31,15 @@
         	<form method="post">
         		<table>
           			<tr>
-          				<td>Coupon Code</td>
+          				<td><b>Coupon Code</b></td>
           				<td><input type="text" id="coupon_code_edit" name="coupon_code_edit"></td>
           			</tr>
           			<tr>
-          				<td>Coupon Discount(%)</td>
-          				<td><input type="text" id="coupon_discount_edit" name="coupon_discount_edit"></td>
+          				<td><br><b>Coupon Discount(%)</b></td>
+          				<td><br><input type="text" id="coupon_discount_edit" name="coupon_discount_edit"></td>
           			</tr>
           			<tr>
-          				<td><input type="hidden" id="coupon_id_edit" name="coupon_id_edit"></td>
+          				<td><br><input type="hidden" id="coupon_id_edit" name="coupon_id_edit"></td>
           				<td><br></td>
           			</tr>
           			<tr>

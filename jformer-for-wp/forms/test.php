@@ -1,11 +1,5 @@
 <?php
-/**function wpdocs_theme_name_scripts() {
-    wp_enqueue_script( 'simply-scroll', plugin_dir_path( __FILE__ ) . '/js/jquery.simplyscroll.js', array(), '1.0.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
-**/
 
-wp_enqueue_script('jquery.simplyscroll.js');
 //Set the test_id
 $test_id = $_GET['test_id'];
 if (!isset($test_id))
