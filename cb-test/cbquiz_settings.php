@@ -9,7 +9,7 @@
 		$merchantid = $_POST['pay_merchant'];
 		$status = 0;
 		if (!empty($_POST['pay_salt']) && !empty($_POST['pay_merchant'])) {
-			if (count($result) == 0) {
+			if (empty($result[0]) && empty($result[1]) && empty($result[2])) {
 				add_option('payu_salt',$salttid);
 				add_option('payu_merchant',$merchantid);
 				add_option('payu_status',$status);
@@ -33,11 +33,11 @@
 			$error = "<strong style='color:red'>Please fill all fields.</strong>";
 		}
 	}
-	if (isset($_POST['statusbtn'])) {
+	/*if (isset($_POST['statusbtn'])) {
 		$status = $_POST['status'];
 		$wpdb->update($table_name,Array('payu_status' => $status),Array('id' => 1));
 		$result = $wpdb->get_results($sql);
-	}
+	}*/
 ?>
 <div>
 	<div>

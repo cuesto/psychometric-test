@@ -241,7 +241,7 @@ margin:0 1em 0 0
 
 .jFormer .jFormerControl li button {
 font-size:1em;
-background:#FFF url(images/button-bg.png) repeat-x scroll left center;
+background:black;
 border:1px solid;
 cursor:pointer;
 -moz-box-shadow:0 1px 3px rgba(0,0,0,0.15);

@@ -68,6 +68,10 @@ function cbquiz_coupons()
 {
 	include ('cbquiz_coupons.php');
 }
+function report_settings()
+{
+    include ('report_settings.php');
+}
 function cbquiz_admin_actions()
 {
     add_menu_page("CB Quiz", "CB Quiz", 1, "CB-Quiz", "cbquiz_admin", site_url().'/wp-content/themes/cb/images/favicon.ico');
@@ -75,6 +79,7 @@ function cbquiz_admin_actions()
     add_submenu_page("CB-Quiz", "Results", "Results","manage_options", "cbquiz-view-results","cbquiz_results_page");
     add_submenu_page("CB-Quiz", "Settings", "Settings","manage_options", "cbquiz-settings","cbquiz_settings");
     add_submenu_page("CB-Quiz", "Coupons", "Coupons","manage_options", "cbquiz-coupons","cbquiz_coupons");
+    add_submenu_page("CB-Quiz", "Branding", "Branding", "manage_options", "branding", "report_settings");
 }
 
 function cbquiz_install()
@@ -445,6 +450,8 @@ function order_payment_form() {
 add_shortcode('order_payment',order_payment_form);
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
+
+/* Order & Payment Form */
 function payform()
 {
 
