@@ -1,8 +1,8 @@
 <?php
-
-function cb_ci($ref_no)
-{
-    include ('wp-content/plugins/dompdf/dompdf_config.inc.php');
+//function cb_ci($ref_no)
+//{
+    //ob_start();
+    //include ('wp-content/plugins/cb-test/dompdf/dompdf_config.inc.php');
     include_once ('cb_ci_answers.php');
     include_once ('Barcode39.php');
     include_once ('drawPie.php');
@@ -10,7 +10,6 @@ function cb_ci($ref_no)
     include_once ('drawBar2.php');
     include_once ('drawHor1.php');
     include_once ('drawHor2.php');
-    
 
     //fetch user's answers and store in an array
     global $wpdb;
@@ -412,10 +411,8 @@ function cb_ci($ref_no)
         $car[$j]['work'] = $careers[$j]->work;
         $car[$j]['requirements'] = $careers[$j]->requirements;
         $car[$j]['title_examples'] = $careers[$j]->title_examples;
-        $car[$j]['degrees_associated_with_this_career'] = $careers[$j]->
-            degrees_associated_with_this_career;
-        $car[$j]['useful_secondary_school_subjects'] = $careers[$j]->
-            useful_secondary_school_subjects;
+        $car[$j]['degrees_associated_with_this_career'] = $careers[$j]->degrees_associated_with_this_career;
+        $car[$j]['useful_secondary_school_subjects'] = $careers[$j]->useful_secondary_school_subjects;
         $car[$j]['employers'] = $careers[$j]->employers;
         $car[$j]['image'] = $careers[$j]->image;
     }
@@ -512,18 +509,13 @@ for($i=0;$i<3;$i++)
         $career_choice[$i]['image_2'] = $choice_changes[1]['image'];
     }
 }
-//print_r($career_details);
-//exit();
 
 
-
-
-
-
+//ob_start();
     $allPage = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<link href='wp-content/plugins/cb-test/result_scripts/styleRam.css' rel='stylesheet' type='text/css' />
+<link href='wp-content/plugins/cb-test/result_scripts/styleRam.css' rel='stylesheet' type='text/css'/>
 </head>
 <body>
 <div class='p1Table_01'>
@@ -691,7 +683,7 @@ for($i=0;$i<3;$i++)
     
 	<div class='Summary1-listTable_'>
 	  <table width='100 % ' border='0' bgcolor=' #e6eff8'>";
-      
+
         $allPage.="<tr>
             <td width = '45%'>The way you perceive the problem</td>
             <td width = '17%' class = 'BlueTable'>
@@ -749,7 +741,7 @@ for($i=0;$i<3;$i++)
  
  if($payFlag==0)
  {
-    $allPage.="<div style='position:absolute;
+    $allPage .="<div style='position:absolute;
 	left:313px;
 	top:206px;
 	width:405px;
@@ -757,7 +749,7 @@ for($i=0;$i<3;$i++)
     font-size: x-large;'> Please pay to see the full report</div>";
  }
  
-    $allPage.="<div class='Summary1-Heading-graph_'>$first_name's study habits:</div>
+    $allPage .="<div class='Summary1-Heading-graph_'>$first_name's study habits:</div>
     <div style='position:absolute;z-index-2;top:366px;left:18px;width:345px;border: ridge; font-weight: bold;
     text-align:center;height:16px;font-size:10pt;'>&lt;30:Needs work|
     30-60:Good|
@@ -775,16 +767,16 @@ for($i=0;$i<3;$i++)
         
     if($payFlag==0)
     {
-        $allPage.="<div class='Summary1-Graph2_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
+        $allPage .="<div class='Summary1-Graph2_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;height:110px;'>Please pay to see the full report</div>
                     <div class='Summary1-Graph1_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;height:110px;'> Please pay to see the full report</div>";
     }
+
      
-     
-$allPage.="<div class='Summary1-HeadingCharacteristics_'>$first_name's characteristics:</div>
+$allPage .="<div class='Summary1-HeadingCharacteristics_'>$first_name's characteristics:</div>
         	
         	<div class='Summary1-Table2_'>
         " . $CS_characteristic[0] . "		
@@ -792,12 +784,12 @@ $allPage.="<div class='Summary1-HeadingCharacteristics_'>$first_name's character
            
            if($payFlag==0)
            {
-            $allPage.="<div class='Summary1-Table2_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
+            $allPage .="<div class='Summary1-Table2_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large; height:85px;top:625px;'>Please pay to see the full report</div>";
            } 
             
-                $allPage.="<div class='Summary1-BulbImg_'><p>	
+                $allPage .="<div class='Summary1-BulbImg_'><p>	
         				$first_name!<br/><br/>
         
         				Here is your Report	</p>
@@ -813,12 +805,12 @@ $allPage.="<div class='Summary1-HeadingCharacteristics_'>$first_name's character
 
 if($payFlag==0)
 {    
-$allPage.="<div class='Summary1-Profess-List_' style='z-index: 2; width:467px;top:770px;height:82px; background-color: #cdc9c8;text-align:center;
+$allPage .="<div class='Summary1-Profess-List_' style='z-index: 2; width:467px;top:770px;height:82px; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;'>Please pay to see the full report</div>";
 }
 
-$allPage.="<div class = 'Summary1-45_'>Expert recommends: </div > 
+$allPage .="<div class = 'Summary1-45_'>Expert recommends: </div > 
         
         <div class = 'Summary1-list-expert_'> 
         <ul type ='disc'> ";
@@ -826,16 +818,16 @@ $allPage.="<div class = 'Summary1-45_'>Expert recommends: </div >
         
     for($k=0;$k<3;$k++)
     {                            
-        $allPage.="<li>";
-        $allPage.=substr($career_details[$k]->name, 0, -1).": ";        
+        $allPage .="<li>";
+        $allPage .=substr($career_details[$k]->name, 0, -1).": ";        
         if(isset($career_choice[$k]['title_verb_1']))
         {        
-             $allPage.= "You need to work on your " . $career_choice[$k]['title_verb_1'];
+             $allPage .= "You need to work on your " . $career_choice[$k]['title_verb_1'];
             
             if (isset($career_choice[$k]['title_verb_2']))
                 $allPage .= " and " . $career_choice[$k]['title_verb_2'];
         } else {
-            $allPage.="Your personality suits for this profession, keep moving ahead";
+            $allPage .="Your personality suits for this profession, keep moving ahead";
                     
         }            
         $allPage .= "</li>";
@@ -847,13 +839,13 @@ $allPage.="<div class = 'Summary1-45_'>Expert recommends: </div >
        
 if($payFlag==0)
 {
-    $allPage.="<div class = 'Summary1-list-expert_' style='z-index: 2; top:913px; height:64px;width:565px; background-color: #cdc9c8;text-align:center;
+    $allPage .="<div class = 'Summary1-list-expert_' style='z-index: 2; top:913px; height:64px;width:565px; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;'>Please pay to see the full report</div>";
 }
        
        
-       $allPage.="<div class='GenericFooter'>
+       $allPage .="<div class='GenericFooter'>
 		  contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com
 	   </div>
 	 <div class='pageNo'>Page:" . $pageNo++ . "</div>
@@ -944,7 +936,7 @@ $allPage .= "<div class='p4Table_01'>
     	</div>	 
     	<div class='page4-74_'>Determined:</div>";
     
-    	$allPage.="<div class='page4-78_'>	$first_name, you are high in determination. You find out the solution or result on urgent basis.</div>";
+    	$allPage .="<div class='page4-78_'>	$first_name, you are high in determination. You find out the solution or result on urgent basis.</div>";
     }
     else
     {
@@ -953,17 +945,17 @@ $allPage .= "<div class='p4Table_01'>
     	</div>	 
     	<div class='page4-74_'>Moody:</div>";
     
-        $allPage.="<div class='page4-78_'>	$first_name, you are high in moodiness. You can easily deviate from his basic work and engage in other work.</div>";
+        $allPage .="<div class='page4-78_'>	$first_name, you are high in moodiness. You can easily deviate from his basic work and engage in other work.</div>";
     }
 
-          $allPage.= "<div class='p4graph2_'>
+          $allPage .= "<div class='p4graph2_'>
                 <img src='wp-content/plugins/cb-test/result_scripts/tmp/" . $ref_no .
               "resultPie2.png' width='400' height='222' alt=''/>
                </div>";
       
       if($payFlag==0)
       {
-        $allPage.="<div style='position:absolute;
+        $allPage .="<div style='position:absolute;
         	left:4px;
         	top:644px;
 	        width:370px;
@@ -976,7 +968,7 @@ $allPage .= "<div class='p4Table_01'>
       }
 
 
-    $allPage.="<div class='GenericFooter'> contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com </div>
+    $allPage .="<div class='GenericFooter'> contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com </div>
     </div><div class='pageNo'>Page:" . $pageNo++ . "</div>
 </div>
 
@@ -1011,7 +1003,7 @@ $allPage .= "<div class='p4Table_01'>
 Social expression is the pattern in which we decide to work on our solution. The two major expressions are extrovert behavior where we take help of others to solve the problem and introvert behavior where we solve the problem by own.    </div>";
 
 
-    $allPage.="<div class='p5-graph-intr_'>
+    $allPage .="<div class='p5-graph-intr_'>
 		<img src='wp-content/plugins/cb-test/result_scripts/tmp/" . $ref_no .
         "resultPie3.png' width='400' height='222' alt=''/>
 	</div>";
@@ -1023,7 +1015,7 @@ Social expression is the pattern in which we decide to work on our solution. The
         		<img  src='wp-content/plugins/cb-test/result_scripts/images/p5GroupDisc.gif' width='56' height='48' alt='' />
         	</div>";
           
-            $allPage.="<div class='p5-text-14-1_'>
+            $allPage .="<div class='p5-text-14-1_'>
         		$first_name, you are high in extrovertness. You can easily express your ideas and views in your social atmosphere.
         	</div>";
     }
@@ -1033,14 +1025,14 @@ Social expression is the pattern in which we decide to work on our solution. The
         	<div class='p5GroupDisc_'>
         		<img  src='wp-content/plugins/cb-test/result_scripts/images/p5_introvert.gif' width='56' height='48' alt='' />
         	</div>";
-            $allPage.="<div class='p5-text-14-1_'>
+            $allPage .="<div class='p5-text-14-1_'>
         	 $first_name, you are high in introvertness. You find new ways to express your ideas and thoughts other then general prescribe manner.
         	</div>";
     }
 
 if($payFlag==0)
 {
-    $allPage.="<div class='p5-graph-intr_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
+    $allPage .="<div class='p5-graph-intr_' style='z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large; height:210px; width:330px;'>Graph not available<br/>Please pay to see the full report
                     </div>
@@ -1059,7 +1051,7 @@ if($payFlag==0)
         Decision making capacity is the fourth pattern in which a person develops habit to solve the problem as early as possible. On the other hand, there is security mildness thinking in which person knows about solution but invest time to verify the outcomes which takes time and slightly delays the result.
 	</div>";
 
-    $allPage.="<div class='p5-graphQuick2_'>
+    $allPage .="<div class='p5-graphQuick2_'>
 		<img src='wp-content/plugins/cb-test/result_scripts/tmp/" . $ref_no .
         "resultPie4.png' width='400' height='222' alt=''/>
 	</div>";    
@@ -1089,7 +1081,7 @@ if($payFlag==0)
     
     if($payFlag==0)
 {
-    $allPage.="<div class='p5-graphQuick2_' style='position:absolute; z-index: 2; background-color: #cdc9c8;text-align:center;
+    $allPage .="<div class='p5-graphQuick2_' style='position:absolute; z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large; left:372px;height:260px; width:363px;'>Graph not available<br/>Please pay to see the full report
                     </div>
@@ -1164,7 +1156,7 @@ if($payFlag==0)
 
 if($payFlag==0)
 {
-    $allPage.="<div class='p6-Graph-Flxblty_' style='position:absolute; z-index: 2; background-color: #cdc9c8;text-align:center;
+    $allPage .="<div class='p6-Graph-Flxblty_' style='position:absolute; z-index: 2; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large; left:372px;height:260px; width:350px;'>Graph not available<br/>Please pay to see the full report
                     </div>
@@ -1246,7 +1238,7 @@ if($payFlag==0)
 	</div>";
     
   
-    $allPage.="<div class='page9-47_'>
+    $allPage .="<div class='page9-47_'>
 		<img src='wp-content/plugins/cb-test/result_scripts/tmp/" . $ref_no .
         "resultBar1.png' width='675' height='235' alt=''/>
 	</div>
@@ -1255,13 +1247,13 @@ if($payFlag==0)
     
     if($payFlag==0)
     {
-        $allPage.="<div class='page9-47_' style='z-index:2;left:202px;top:725px;height:208px;
+        $allPage .="<div class='page9-47_' style='z-index:2;left:202px;top:725px;height:208px;
         width:482px;background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;'>Please pay to see the full report</div>";
     }
     
-$allPage.="<div class='GenericFooter'>
+$allPage .="<div class='GenericFooter'>
 		contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com
 	</div>
      <div class='pageNo'>Page:" . $pageNo++ . "</div>
@@ -1340,7 +1332,7 @@ Achievement of an action within a specific time and specific parameter which is 
 		It comprises of intelligence, emotion and spiritualism. This gives strength to analyze and take proper decisions to resolve a given problem which is acceptable in person's own society.
 	</div>";
 
-    $allPage.="<div class='p10-GraphDiv_'>
+    $allPage .="<div class='p10-GraphDiv_'>
 		<img src='wp-content/plugins/cb-test/result_scripts/tmp/" . $ref_no .
         "resultBar2.png' width='678' height='260' alt=''/>
 	</div>
@@ -1349,12 +1341,12 @@ Achievement of an action within a specific time and specific parameter which is 
  
     if($payFlag==0)
     {
-        $allPage.="<div class='p10-GraphDiv_'style='z-index:2;left:175px;top:710px;height:232px;
+        $allPage .="<div class='p10-GraphDiv_'style='z-index:2;left:175px;top:710px;height:232px;
         width:515px;background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;'>Please pay to see the full report</div>";
     }
-$allPage.="<div class='GenericFooter'>
+$allPage .="<div class='GenericFooter'>
 		contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com 
 	</div>
      <div class='pageNo'>Page:" . $pageNo++ . "</div>
@@ -1453,7 +1445,7 @@ $allPage.="<div class='GenericFooter'>
 
 if($payFlag==0)
 {
-  $allPage.="<div style='position:absolute; top:390px; left:0; width:700px; height:225px; background-color: #cdc9c8;text-align:center;
+  $allPage .="<div style='position:absolute; top:390px; left:0; width:700px; height:225px; background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large; z-index:2;'>Please pay to see the full report</div>";  
 }
@@ -1536,7 +1528,7 @@ if($payFlag==0)
     if(isset($aw) && !empty($aw))
         $allPage.="Work:";
                 
-    $allPage.="</div>
+    $allPage .="</div>
 
 	<div class='p8-Text14-2_'>";
 
@@ -1577,10 +1569,10 @@ if($payFlag==0)
                   $allPage .= "<div class='page8-31_'>";
         $aw = trim($car[$z]['requirements']);
         if(isset($aw) && !empty($aw))
-            $allPage.="Requirements:";
-        $allPage.="</div>";
+            $allPage .="Requirements:";
+        $allPage .="</div>";
 
-$allPage.="	<div class='page8-33_'>";
+$allPage .="<div class='page8-33_'>";
         }
 
 
@@ -1618,8 +1610,8 @@ $allPage.="	<div class='page8-33_'>";
         $allPage .= "<div class='page8-36_'>";
         $aw = trim($car[$z]['title_examples']);
         if(isset($aw) && !empty($aw))
-            $allPage.="Title examples:";
-        $allPage.="
+            $allPage .="Title examples:";
+        $allPage .="
 	</div>
 	<div class='page8-37_'>";
 
@@ -1658,7 +1650,7 @@ $allPage.="	<div class='page8-33_'>";
         $aw = trim($car[$z]['degrees_associated_with_this_career']);
         if(isset($aw) && !empty($aw))
             $allPage.="Degrees associated with this career:";
-        $allPage.="</div><div class='page8-40_'>";
+        $allPage .="</div><div class='page8-40_'>";
 
 
         $title_ex = $car[$z]['degrees_associated_with_this_career'];
@@ -1710,29 +1702,29 @@ $allPage.="	<div class='page8-33_'>";
         $allPage .= "<div class='page8-44_'>";
         $aw = trim($car[$z]['useful_secondary_school_subjects']);
         if(isset($aw) && !empty($aw))
-            $allPage.="Useful secondary school subjects:";
-        $allPage.="</div>";
+            $allPage .="Useful secondary school subjects:";
+        $allPage .="</div>";
  
         $allPage .= "<div class='page8-47_'>";
         $aw = trim($car[$z]['employers']);
         if(isset($aw) && !empty($aw))
-            $allPage.="Employers:";
-        $allPage.="</div>";
+            $allPage .="Employers:";
+        $allPage .="</div>";
         
-        $allPage.="
+        $allPage .="
 	<div class='page8-49_'>
 		" . $car[$z]['employers'] . "    
 	</div>";
     
     if($payFlag==0&&$z>0)
     {
-        $allPage.="<div style='position:absolute;top:150px;z-index:2;height:825px;width:701px;left:10px;
+        $allPage .="<div style='position:absolute;top:150px;z-index:2;height:825px;width:701px;left:10px;
         background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;
                     font-size: x-large;'>Please pay to see the full report</div>";
     }
     
-	$allPage.="<div class='GenericFooter'>
+	$allPage .="<div class='GenericFooter'>
 		contactus@careerbreeder.com | ".CONTACT_NUMBER." | www.careerbreeder.com 
 	</div>
      <div class='pageNo'>Page:" . $pageNo++ . "</div>
@@ -1767,7 +1759,7 @@ $allPage.="	<div class='page8-33_'>";
     $image = trim($career_details[$j]->image);
     $image = str_replace(" ", "%20", $image);
     
-    $allPage.="  
+    $allPage .="  
     <div class='p8-img-musicians_'>
         <img src='wp-content/plugins/cb_manager/images/".$image."' width='166' height='255' alt='' />
     </div>";
@@ -1798,7 +1790,7 @@ $allPage.="	<div class='page8-33_'>";
     if(isset($career_choice[$j]['title_2']))
         $allPage .= " You also need to work to increase your ".$career_choice[$j]['title_verb_2'].".";
     
-    $allPage.=" Here are the suggestions you need to incorporate to make yourself more competent.
+    $allPage .=" Here are the suggestions you need to incorporate to make yourself more competent.
     </div>
     
     <div class='Doctor-sECMIND_'>
@@ -1813,7 +1805,7 @@ $allPage.="	<div class='page8-33_'>";
     
     if(isset($career_choice[$j]['title_2']))
     {              
-        $allPage.="
+        $allPage .="
             <div class='Doctor-imgMoody_'>
             <img   src='".$career_choice[$j]['image_2']."' width='61' height='58' alt='' />
             </div>
@@ -1829,7 +1821,7 @@ $allPage.="	<div class='page8-33_'>";
 
 if($payFlag==0&&$j>0)
     {
-        $allPage.="
+        $allPage .="
         <div style='position:absolute;top:150px;z-index:2;height:825px;width:695px;left:8px;
         background-color: #cdc9c8;text-align:center;
                     border: solid; font-weight: bolder;     
@@ -1910,14 +1902,14 @@ if($payFlag==0&&$j>0)
 </div>
 </body>
 </html>";
-
-    $dompdf = new DOMPDF();
+	require_once 'wp-content/plugins/cb-test/dompdf/autoload.inc.php';
+	use Dompdf\Dompdf;
+    $dompdf = new Dompdf();
     $dompdf->load_html($allPage);
     $dompdf->set_paper('A4', 'portrait');
     $dompdf->render();
     $dompdf->stream('report.pdf', array('Attachment' => false));
-
-}
+//}
 
 function cb_test_helper123($char)
 {

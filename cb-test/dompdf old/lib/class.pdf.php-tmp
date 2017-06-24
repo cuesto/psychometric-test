@@ -1,0 +1,2 @@
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in C:\Users\dayamoy\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 843

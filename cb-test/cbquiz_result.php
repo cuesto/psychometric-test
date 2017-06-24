@@ -1,9 +1,10 @@
 <?php
-function cbquiz_results($atts)
+//add_shortcode('cbquiz_results', 'cbquiz_results');
+function cbquiz_results()
 {
     global $wpdb;
-    $ref_no=$atts;
-    if(isset($_SESSION['ref_no']))
+    $ref_no='';
+   if(isset($_SESSION['ref_no']))
         $ref_no = $_SESSION['ref_no'];
     if(isset($_GET['ref_no']))
         $ref_no = $_GET['ref_no'];
@@ -32,8 +33,10 @@ function cbquiz_results($atts)
         try {
             if(isset($result_scripts[$test_id])) {    
                 require_once('result_scripts/'.$result_scripts[$test_id].".php");
-                $functionName = $result_scripts[$test_id];
-                return call_user_func($functionName, $ref_no);
+                if ($result_scripts[$test_id] == 'iq_test') {
+                    $functionName = $result_scripts[$test_id];
+                    return call_user_func($functionName, $ref_no);
+                }
             } else {
                 return "Ooops, something went wrong.";
             }
@@ -65,6 +68,13 @@ function cbquiz_results($atts)
         echo wp_login_form($args);
     }
 }
-    
-add_shortcode('cbquiz_results', 'cbquiz_results');
+add_action(init,'career_indicator_report');
+function career_indicator_report() {
+    //echo "hi";
+    $post_id = url_to_postid( "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+    $post = get_post($post_id); 
+    if($post->post_name == get_option('brand_result_page')) {
+        cbquiz_results();
+    }
+}
 ?>

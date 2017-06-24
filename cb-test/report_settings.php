@@ -6,6 +6,7 @@
 	$result[2] = get_option('brand_email');
 	$result[3] = get_option('brand_phone_no');
 	$result[4] = get_option('brand_website');
+	$result[5] = get_option('brand_result_page');
 	//echo wp_basename($result[0]);
 	//print_r($result);
 	//echo "<br>".count($result);
@@ -35,6 +36,7 @@
 		$b_email = $_POST['b_email'];
 		$b_phone = $_POST['b_phone'];
 		$b_website = $_POST['b_website'];
+		$b_result_page = $_POST['b_result_page'];
 		//var_dump($movefile);
 		//echo "<br>".$b_logo;
 		
@@ -91,6 +93,8 @@
 			else {
 				$error .= "<h4 style='color:red;'>Failed to save</h4>";
 			}
+			add_option('brand_result_page',$b_result_page);
+			$result[5] = get_option('brand_result_page');
 		}
 		else {
 			if (isset($b_name) && isset($b_email) && isset($b_phone) && isset($b_website)) {
@@ -144,6 +148,8 @@
 			else {
 				$error = "<h4 style='color:red;'>Failed to update</h4>";
 			}
+			update_option('brand_result_page',$b_result_page);
+			$result[5] = get_option('brand_result_page');
 		}
 
 	}	
@@ -172,6 +178,27 @@
 			<tr>
 				<th scope="row"><label for="brandwebsite">Brand Website</label></th>
 				<td><input type="text" name="b_website" class="regular-text" value="<?php echo $result[4]; ?>"></td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="brandresultpage">Result Page</label></th>
+				<td>
+					<select name="b_result_page" class="regular-text">
+						<option value="">choose</option>
+						<?php
+							$sel = "";
+							$pages= get_pages();
+							foreach ($pages as $page) {
+								if ($result[5] == $page->post_name) {
+									$sel = "SELECTED";
+								}
+								else{
+									$sel = "";
+								}
+								echo "<option value='".$page->post_name."'".$sel." >".$page->post_name."</option>";
+							} 
+							?>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<table>

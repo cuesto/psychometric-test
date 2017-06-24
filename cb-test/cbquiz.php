@@ -310,7 +310,7 @@ function ref_no_details($ref_no, $coupon)
     $discount = curl_exec($ch);
     curl_close($ch);*/
     $table = $wpdb->prefix . "cb_coupon";
-    $discount = $wpdb->get_results("SELECT coupon_discount FROM `$table` WHERE coupon_code = '".$coupon."'");
+    $discount = $wpdb->get_results("SELECT coupon_discount FROM `$table` WHERE coupon_max_limit > coupon_used AND coupon_code = '".$coupon."'");
     $coupon_check = $wpdb->num_rows;   
     if ($coupon_check > 0) {
         //$discount = json_decode(trim($discount, true),true);
@@ -318,7 +318,7 @@ function ref_no_details($ref_no, $coupon)
         $details['status'] = "Coupon successfully applied";
     } else{
         $details['discount'] = 0;
-        $details['status'] = 'Sorry, selected coupon doesn\'t exist.';
+        $details['status'] = 'Sorry, selected coupon expired or doesn\'t exist.';
     }
 
     $details['total'] = $details['item_cost'] - $details['discount'];
@@ -454,7 +454,7 @@ add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
 /* Order & Payment Form */
 function payform()
 {
-
+    wp_enqueue_style("stylecss",plugins_url( 'css/style.css', __FILE__ ));
         $test_id = $_GET['test_id'];
         $ref_no = $_GET['ref_no'];
         
@@ -501,11 +501,11 @@ function payform()
         </table>';    
 
         echo "<hr/>";
-        echo '<p>Got a coupon? Enter it here.</p><form name="coup" method="get">
+        echo '<p>Got a coupon? Enter it here.</p><form name="coup" method="get" id="form" style="display: inline-block">
             <input type="hidden" name="ref_no" value="'.$ref_no.'"/>
             <input type="hidden" name="test_id" value="2"/>
-            <input type="text" name="coupon" value="'.$_GET['coupon'].'">
-            <input type="submit" class="btn"/>
+            <input type="text" class="input" name="coupon" value="'.$_GET['coupon'].'" style="display: inline-block; width: auto;">
+            <button type="submit" class="btn" style="display: inline-block;">Submit</button>
         </form>';
 
         echo "</div>";
@@ -514,7 +514,7 @@ function payform()
         echo do_shortcode('[jformer id="2"]');
     }
     else{
-        echo "<form method='post' align='center'><button type='submit' name='unlock'>Unlock</button></form>";
+        echo "<form method='post' align='center'><br /><br /><button type='submit' name='unlock' class='btn'>Unlock</button></form>";
     }
 
 }

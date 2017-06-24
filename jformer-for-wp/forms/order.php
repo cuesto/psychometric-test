@@ -1,5 +1,5 @@
 <?php
-
+    wp_enqueue_style("style1css",plugins_url( 'css/style1.css', __FILE__ ));
     $test_id = $_GET['test_id'];
         $ref_no = $_GET['ref_no'];
         
