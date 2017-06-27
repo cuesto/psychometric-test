@@ -1265,6 +1265,7 @@ font-weight: 500;
 }
 
 #form .input {
+	width: auto;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;

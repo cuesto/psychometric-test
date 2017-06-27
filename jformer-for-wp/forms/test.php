@@ -198,6 +198,7 @@ $form->addJFormComponentArray(Array(new JFormComponentHidden('test_id', '17')));
  */
 function onSubmit($formValues)
 {
+	wp_enqueue_style("style1css",plugins_url( 'css/style1.css', __FILE__ ));
     if($formValues->page16->page16_section2->test_id==17)
         $test_id = 17;
     else

@@ -243,6 +243,19 @@ function cbquiz_install()
             (10, 'Senior Professionals - 8+ Years Experience')";
     $wpdb->query( $sql );
 
+    $table_name = $wpdb->prefix . "cb_coupon";
+    $sql = "CREATE TABLE IF NOT EXISTS `$table_name` (
+          `coupon_id` int(10) NOT NULL AUTO_INCREMENT,
+          `coupon_code` varchar(50) NOT NULL,
+          `coupon_discount` int(3) NOT NULL,
+          `coupon_used` int(10) NOT NULL,
+          `coupon_max_limit` int(255) NOT NULL,
+          `last_update` datetime DEFAULT NULL,
+          PRIMARY KEY (`coupon_id`),
+          UNIQUE KEY `coupon_code` (`coupon_code`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=latin1";
+    dbDelta($sql);
+
     add_option("cbquiz_db_version", $cbquiz_db_version);
 
 }
@@ -451,6 +464,12 @@ add_shortcode('order_payment',order_payment_form);
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('edit_user_profile_update', 'save_custom_user_profile_fields');
 
+function couponcheck()
+{
+  include 'user_reference.php';
+}
+add_shortcode('couponcheck','couponcheck');
+
 /* Order & Payment Form */
 function payform()
 {
@@ -518,5 +537,53 @@ function payform()
     }
 
 }
-add_shortcode('payform',payform);
+add_shortcode('payform','payform');
+
+function checkcoupon(){
+  $fontend = array();
+
+    global $wpdb;
+    $email = $_POST['email'];
+    $reference_no = $_POST['ref_no'];
+    $email = str_replace("%40","@",$email);
+    $table = $wpdb->prefix . "cb_coupon";
+      $discount = $wpdb->get_results("SELECT coupon_discount, coupon_code, coupon_used FROM `$table` WHERE (coupon_email = '".$email."') AND (coupon_max_limit > coupon_used)");
+      $coupon_check = $wpdb->num_rows;
+      if ($coupon_check > 0) {
+        if ($discount[0]->coupon_discount == 100) {
+          $table = $wpdb->prefix . "cb_result_master";
+          $payment_status_update = $wpdb->update($table, array('payment' => 1, 'applied_coupon' => $discount[0]->coupon_code), array('ref_no' => $reference_no));
+          if ($payment_status_update) {
+            $table = $wpdb->prefix . "cb_coupon";
+            $coupon_status_update = $wpdb->update($table, array('coupon_used' => $discount[0]->coupon_used + 1), array('coupon_code' => $discount[0]->coupon_code));
+            $fontend[first] = "<b style='color: blue'>Report Unlocked</b>";
+            $fontend[second] = "<b style='color: blue'>Coupon applied successfully</b>";
+            echo json_encode($fontend);
+          }
+          else {
+            $fontend[first] = "<button class='btn' id='unlock'>Unlock</button>";
+            $fontend[second] = "<b style='color: red'>Something went wrong! Please try again!</b>";
+            echo json_encode($fontend);
+          }
+        }
+        else {
+          $fontend[first] = "<button class='btn' id='unlock'>Unlock</button>";
+          $fontend[second] = "<b style='color: red'>100% discount coupon required!</b>";
+          echo json_encode($fontend);
+        }
+      }
+      else {
+        $fontend[first] = "<button class='btn' id='unlock'>Unlock</button>";
+        $fontend[second] = "<b style='color: red'>Invalid Coupon!</b>";
+        echo json_encode($fontend);
+      }
+      die();
+    }
+  add_action('wp_ajax_checkcoupon', 'checkcoupon');
+
+  function user_login_reference()
+  {
+    include 'user_login_reference.php';
+  }
+  add_shortcode('user_login_reference','user_login_reference');
 ?>

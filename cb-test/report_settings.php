@@ -159,16 +159,16 @@
 	<form method="post" class="form" enctype="multipart/form-data">
 		<table class="form-table">
 			<tr>
-				<th scope="row"><lable for="brandlogo">Brand Logo</lable></th>
+				<th scope="row"><lable for="brandlogo">Brand Logo <span style="color: red">*</span></lable></th>
 				<td><input type="file" name="b_logo" class="regular-text"></td>
 				<?php if (!empty($result[0])) echo '<td><img src="'.$result[0].'" width="300" height="200"></td>'; ?>
 			</tr>
 			<tr>
-				<th scope="row"><lable for="brandname">Brand Name</lable></th>
+				<th scope="row"><lable for="brandname">Brand Name <span style="color: red">*</span></lable></th>
 				<td><input type="text" name="b_name" class="regular-text" required="required" value="<?php echo $result[1]; ?>"></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="brandemail">Brand Email</label></th>
+				<th scope="row"><label for="brandemail">Brand Email <span style="color: red">*</span></label></th>
 				<td><input type="email" name="b_email" class="regular-text" required="required" value="<?php echo $result[2]; ?>"></td>
 			</tr>
 			<tr>
@@ -180,7 +180,7 @@
 				<td><input type="text" name="b_website" class="regular-text" value="<?php echo $result[4]; ?>"></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="brandresultpage">Result Page</label></th>
+				<th scope="row"><label for="brandresultpage">Result Page <span style="color: red">*</span></label></th>
 				<td>
 					<select name="b_result_page" class="regular-text">
 						<option value="">choose</option>
